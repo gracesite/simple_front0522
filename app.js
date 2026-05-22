@@ -12,9 +12,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Backend Response: {data}</h1>
-    </div>
+    
+       {data}
+    
   );
 }
 
