@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/message')
+    fetch('https://simple20260520-repo-simple20260515.onrender.com/products')
       .then(response => response.json())
       .then(json => setData(json.text))
       .catch(err => console.error(err));
