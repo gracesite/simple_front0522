@@ -23,7 +23,7 @@ app.get("/format_products", async (req, res) => {
     const data = await response.json();
 
     // 2. integrate with HTML template
-    res.type('html').send(renderTemplate((data));
+    res.type('html').send(renderTemplate(data));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to fetch data' });
