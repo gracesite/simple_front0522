@@ -6,7 +6,7 @@ app.get("/", (req, res) => res.type('html').send(html));
 app.get("/list_products", async (req, res) => {
   try {
     // 1. Call the external API
-    const response = await fetch('https://https://simple20260520-repo-simple20260515.onrender.com/products');
+    const response = await fetch('https://simple20260520-repo-simple20260515.onrender.com/products');
     const data = await response.json();
 
     // 2. Send the data back to the client as JSON
