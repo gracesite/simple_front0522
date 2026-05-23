@@ -23,6 +23,26 @@ const server = app.listen(port, () => console.log(`Example app listening on port
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
+const htmlProdList = `
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>API Data Integration</h1>
+    <div id="content">Loading...</div>
+
+    <script>
+        // 3. Frontend Integration
+        async function loadData() {
+            const res = await fetch('/list_products');
+            const data = await res.json();
+            document.getElementById('content').innerText = JSON.stringify(data, null, 2);
+        }
+        loadData();
+    </script>
+</body>
+</html>
+`;
+
 const html = `
 <!DOCTYPE html>
 <html>
