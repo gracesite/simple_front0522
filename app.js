@@ -16,13 +16,43 @@ app.get("/list_products", async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch data' });
   }
 });
+app.get("/format_products", async (req, res) => {
+  try {
+    // 1. Call the external API
+    const response = await fetch('https://simple20260520-repo-simple20260515.onrender.com/products');
+    const data = await response.json();
 
+    // 2. integrate with HTML template
+    res.type('html').send(renderTemplate((data));
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
+
+function renderTemplate(data) {
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" href="/style.css">
+      </head>
+      <body>
+        <h1>API Results</h1>
+        <div class="card">
+          <pre>${JSON.stringify(data, null, 2)}</pre>
+        </div>
+      </body>
+    </html>
+  `;
+}
+  
 const htmlProdList = `
 <!DOCTYPE html>
 <html>
