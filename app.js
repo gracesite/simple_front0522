@@ -3,6 +3,20 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
+app.get("/list_products", async (req, res) => {
+  try {
+    // 1. Call the external API
+    const response = await fetch('https://https://simple20260520-repo-simple20260515.onrender.com/products');
+    const data = await response.json();
+
+    // 2. Send the data back to the client as JSON
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
+
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
