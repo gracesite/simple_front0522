@@ -36,7 +36,15 @@ server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
 
-function renderTemplate(data) {
+function renderTemplate(products) {
+  const listItems = products.map(product => `
+    <li style="padding: 10px; marrgin: 10px 0; border: 1px solid #ddd; list-style: none;">
+      <strong>Name:</strong> ${product.name} <br>
+      <strong>SKU:</strong> ${product.sku} <br>
+      <strong>Qty:<strong> ${product.qty || 0 }
+    </li>
+  `).join('');
+  
   return `
     <!DOCTYPE html>
     <html>
@@ -45,9 +53,9 @@ function renderTemplate(data) {
       </head>
       <body>
         <h1> The final API Results 2026-05-22</h1>
-        <div class="card">
-          <pre>${JSON.stringify(data, null, 2)}</pre>
-        </div>
+        <ul style="padding: 0;">
+          ${listItems.length > 0 ? listItems : '<p>No products found in the database.</p>'}
+        </ul>
       </body>
     </html>
   `;
