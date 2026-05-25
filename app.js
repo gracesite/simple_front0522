@@ -38,8 +38,9 @@ server.headersTimeout = 120 * 1000;
 
 function renderTemplate(products) {
   console.log('--->>> products=', products);
+  console.log('     typeof=', typeof(products));
   const listItems = products.map(product => `
-    <li style="padding: 10px; marrgin: 10px 0; border: 1px solid #ddd; list-style: none;">
+    <li>
       <strong>Name:</strong> ${product.name} <br>
       <strong>SKU:</strong> ${product.sku} <br>
       <strong>Qty:<strong> ${product.qty || 0 }
