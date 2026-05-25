@@ -39,7 +39,7 @@ server.headersTimeout = 120 * 1000;
 function renderTemplate(products) {
   console.log('--->>> products=', products);
   console.log('     typeof=', typeof(products));
-  const listItems = products.map(product => `
+  const listItems = products.data.map(product => `
     <li>
       <strong>Name:</strong> ${product.name} <br>
       <strong>SKU:</strong> ${product.sku} <br>
