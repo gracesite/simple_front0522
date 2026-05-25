@@ -34,10 +34,11 @@ app.get("/format_products2", async (req, res) => {
   try {
     // 1. Call the external API
     const response = await fetch('https://simple20260520-repo-simple20260515.onrender.com/products');
-    const data = await response.json();
+    const products = await response.json();
 
     // 2. integrate with HTML template
-    res.type('html').send(prodListTemplate(data));
+    console.log('--->>> products.data=', products.data);
+    res.type('html').send(prodListTemplate(products.data));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to fetch data' });
