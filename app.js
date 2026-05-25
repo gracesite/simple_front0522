@@ -37,6 +37,7 @@ server.headersTimeout = 120 * 1000;
 
 
 function renderTemplate(products) {
+  console.log('--->>> products=', products);
   const listItems = products.map(product => `
     <li style="padding: 10px; marrgin: 10px 0; border: 1px solid #ddd; list-style: none;">
       <strong>Name:</strong> ${product.name} <br>
@@ -44,6 +45,7 @@ function renderTemplate(products) {
       <strong>Qty:<strong> ${product.qty || 0 }
     </li>
   `).join('');
+  console.log('--->>> listItems=', listItems);
   
   return `
     <!DOCTYPE html>
