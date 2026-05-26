@@ -66,7 +66,7 @@ function renderTemplate(products) {
     <!DOCTYPE html>
     <html>
       <head>
-        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/prodListStyle.css">
       </head>
       <body>
         <h1> The final API Results 2026-05-22</h1>
